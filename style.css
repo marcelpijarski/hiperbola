@@ -710,10 +710,13 @@ section {
   grid-template-columns: 1fr 1fr;
   gap: 1px;
   background: rgba(21,44,68,0.08);
+  border: 1px solid ;
   border-radius: 18px;
   overflow: hidden;
   max-width: 1000px;
   margin: 0 auto;
+  
+  
 }
 
 .tabela-porownania > div {
@@ -1115,8 +1118,20 @@ section {
 }
 
 .ikona-oferty {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #152c44;
+}
+
+.ikona-oferty svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  flex-shrink: 0;
 }
 
 .karta-oferty h3 {
@@ -3731,8 +3746,24 @@ body.menu-open {
   padding: 70px 6vw;
   display: flex;
   align-items: center;
-  background: #152c44;
+  background: linear-gradient(
+    90deg,
+    #0f2135 0%,
+    #152c44 55%,
+    #fdfcfb 100%
+  );
   overflow: hidden;
+}
+
+@media (max-width: 850px) {
+  .regain-hero {
+    background: linear-gradient(
+      180deg,
+      #0f2135 0%,
+      #152c44 70%,
+      #fdfcfb 100%
+    );
+  }
 }
 
 .regain-hero-kontener {

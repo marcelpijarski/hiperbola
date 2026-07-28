@@ -306,7 +306,7 @@ section {
   align-items: center;
   justify-content: center;
   padding: 1rem 2.6rem;
-  background: #da5f95;
+  background: #63afcd;
   color: #fdfcfb;
   border-radius: 30px;
   font-size: 0.9rem;
@@ -321,9 +321,9 @@ section {
 }
 
 .hero-content a:hover {
-  background: #c14f81;
+  background: #63afcd;
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(218, 95, 149, 0.35);
+  box-shadow: 0 12px 28px rgba(95, 198, 218, 0.35);
 }
 
 
@@ -531,7 +531,7 @@ section {
 .jak-to-dziala .hiperkonkret .historie-informacja {
   max-width: 950px;
   margin: 0 auto;
-  color: #da5f95;
+  color: #287a45;
   font-size: clamp(1.2rem, 2vw, 2rem);
   font-weight: 700;
   line-height: 1.45;
@@ -560,7 +560,7 @@ section {
   height: 60px;
   margin: 0 auto 1.2rem;
   border-radius: 50%;
-  background: rgba(218,95,149,0.15);
+  background: rgba(99, 175, 205, 0.28);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -572,7 +572,7 @@ section {
 }
 
 .filar h3 {
-  color: #DA5F95;
+  color: #0cf9fb;
   font-size: 1rem;
   letter-spacing: 1px;
   font-family: 'Inter', sans-serif;
@@ -714,6 +714,15 @@ section {
   display: inline-block;
   font-size: 0.8rem;
   color: #DA5F95;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.8rem;
+}
+
+.opis-przemiany .mezczyzna{
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #63afcd;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 0.8rem;
@@ -899,42 +908,141 @@ section {
 
 
 .opinie-google {
-  padding: 80px 20px;
+  width: 100%;
+  padding: 7rem 0;
   overflow: hidden;
+  background: #fdfcfb;
+}
+
+.opinie-kontener {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.opinie-naglowek {
+  width: min(720px, calc(100% - 40px));
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+
+.opinie-naglowek span {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: #63afcd;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.opinie-naglowek h2 {
+  margin: 0 0 1rem;
+  color: #152c44;
+  font-size: clamp(2.7rem, 4vw, 4.2rem);
+  line-height: 1.08;
+}
+
+.opinie-naglowek p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #5b6270;
+  font-size: 1.35rem;
+  line-height: 1.7;
 }
 
 .opinie-slider {
-  max-width: 500px;
-  margin: 40px auto;
+  width: 100%;
+  padding: 20px 0 35px;
+  overflow: hidden;
 }
 
-.swiper-wrapper {
+.opinie-slider .swiper-wrapper {
+  align-items: center;
+  transition-timing-function: linear !important;
+}
+
+.opinie-slider .swiper-slide {
+  width: auto;
+  height: auto;
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
 }
 
-.swiper-slide img {
-    width: 100%;
-    display: block;
-    border-radius: 20px;
+.opinie-slider .swiper-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid rgba(21, 44, 68, 0.1);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 15px 40px rgba(21, 44, 68, 0.09);
 }
 
-.opinie-slider > a {
-  display: inline-block;
+.opinie-przycisk-kontener {
+  display: flex;
+  justify-content: center;
   margin-top: 2.5rem;
-  padding: 0.9rem 2.2rem;
-  border: 1px solid #152C44;
-  border-radius: 30px;
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: #152C44;
-  transition: all 0.35s ease;
+  padding: 0 20px;
 }
 
-.opinie-slider > a:hover {
-  background: #152C44;
-  color: #FDFCFB;
+.opinie-przycisk {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2rem;
+  border: 1px solid #152c44;
+  border-radius: 999px;
+  background: transparent;
+  color: #152c44;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.opinie-przycisk:hover {
+  background: #152c44;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(21, 44, 68, 0.18);
+}
+
+@media (max-width: 700px) {
+  .opinie-google {
+    padding: 5rem 0;
+  }
+
+  .opinie-naglowek {
+    margin-bottom: 2rem;
+  }
+
+  .opinie-naglowek h2 {
+    font-size: clamp(2.3rem, 11vw, 3.2rem);
+  }
+
+  .opinie-naglowek p {
+    font-size: 0.95rem;
+  }
+
+  .opinie-slider {
+    padding: 10px 0 25px;
+  }
+
+  .opinie-przycisk {
+    width: 100%;
+    max-width: 340px;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.76rem;
+  }
 }
 
 .gwarancja-wartosc {
@@ -984,7 +1092,7 @@ section {
 }
 
 .karta-oferty:hover {
-  border-color: #DA5F95;
+  border-color: #63afcd;
   transform: translateY(-4px);
 }
 
@@ -1020,11 +1128,11 @@ section {
 
 .karta-oferty > a {
   font-size: 0.85rem;
-  color: #DA5F95;
+  color: #63afcd;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border-bottom: 1px solid #DA5F95;
+  border-bottom: 1px solid #63afcd;
   padding-bottom: 2px;
 }
 
@@ -1360,7 +1468,7 @@ section {
 .btn-kontakt {
   display: inline-block;
   padding: 1rem 2.6rem;
-  background: #DA5F95;
+  background: #63afcd;
   color: #FDFCFB;
   border-radius: 30px;
   font-size: 0.9rem;
@@ -1372,7 +1480,7 @@ section {
 }
 
 .btn-kontakt:hover {
-  background: #c14f81;
+  background: #63afcd;
   transform: translateY(-2px);
 }
 
@@ -1460,7 +1568,7 @@ section {
 }
 
 .footer-bottom .footer-marka {
-  color: #da5f95;
+  color: #63afcd;
   font-weight: 600;
 }
 
@@ -3123,13 +3231,13 @@ body.menu-open {
   display: block;
   margin-bottom: 0.5rem;
   color: #63afcd;
-  font-size: clamp(3rem, 5.5vw, 5.6rem);
+  font-size: clamp(3.5rem, 4.2vw, 4.8rem);
   font-weight: 700;
 }
 
 .regain-hero-opis {
   display: block;
-  font-size: clamp(2.5rem, 6vw, 5.4rem);
+  font-size: clamp(2.5rem, 3.5vw, 3.8rem);
   line-height: 0.98;
 }
 
@@ -3576,7 +3684,29 @@ body.menu-open {
   white-space: nowrap;
 }
 
+.galeria-metamorfoz-regain .karty-przemian {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 1100px;
+  margin-right: auto;
+  margin-left: auto;
+  align-items: stretch;
+}
 
+.galeria-metamorfoz-regain .karta-przemiany {
+  height: 100%;
+}
+
+.galeria-metamorfoz-regain .przemiany-naglowek h2,
+.galeria-metamorfoz-regain .opis-przemiany h3 {
+  color: #000000;
+}
+
+@media (max-width: 800px) {
+  .galeria-metamorfoz-regain .karty-przemian {
+    grid-template-columns: 1fr;
+    max-width: 620px;
+  }
+}
 
 .regain-gwarancja {
   padding: 105px 0;
@@ -4185,6 +4315,8 @@ body.menu-open {
 }
 
 .historia blockquote {
+  width: 100%;
+  max-width: none;
   margin: 0;
   padding: 0;
   border: none;
@@ -4193,7 +4325,9 @@ body.menu-open {
   font-size: clamp(1.2rem, 1.8vw, 1.45rem);
   font-style: italic;
   line-height: 1.55;
-  white-space: pre-line;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .historie-informacja {
@@ -4203,6 +4337,11 @@ body.menu-open {
   font-size: 0.83rem;
   line-height: 1.6;
   text-align: center;
+}
+
+.historia-mezczyzna .historia-etykieta,
+.historia-mezczyzna .historia-rola {
+  color: #63afcd;
 }
 
 
@@ -6796,4 +6935,22 @@ body.menu-open {
   border-color: #ffffff;
   background: #ffffff;
   color: #152c44;
+}
+
+.glow-hero-linia {
+  display: block;
+}
+
+@media (min-width: 901px) {
+  .glow-hero-content {
+    max-width: 1150px;
+  }
+
+  .glow-hero-tytul {
+    font-size: clamp(2.5rem, 4.1vw, 4rem);
+  }
+
+  .glow-hero-linia {
+    white-space: nowrap;
+  }
 }

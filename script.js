@@ -292,33 +292,40 @@ if (
 
 
    
-    /* OPINIE SWIPER */
+   if (document.querySelector(".opinie-slider")) {
+  new Swiper(".opinie-slider", {
+    loop: true,
+    speed: 5000,
+    spaceBetween: 22,
+    slidesPerView: 1.15,
+    centeredSlides: true,
+    allowTouchMove: true,
+    grabCursor: true,
 
-    if(document.querySelector(".opinie-slider")){
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true
+    },
 
-        const opinieSlider = new Swiper(".opinie-slider", {
+    breakpoints: {
+      600: {
+        slidesPerView: 1.8,
+        spaceBetween: 24
+      },
 
-            loop:true,
+      900: {
+        slidesPerView: 2.5,
+        spaceBetween: 26
+      },
 
-            slidesPerView:1,
-
-            speed:7000,
-
-            autoplay:{
-                delay:0,
-                disableOnInteraction:false
-            },
-
-            allowTouchMove:true,
-
-            grabCursor:false
-
-        });
-
+      1200: {
+        slidesPerView: 3.4,
+        spaceBetween: 28
+      }
     }
-
-
-
+  });
+}
 
 
     /* GLOW UP METAMORFOZY */
@@ -474,69 +481,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-function uruchomAutoplayOpinii() {
-  const widget = document.querySelector(".sk-ww-google-reviews");
 
-  if (!widget) {
-    return;
-  }
-
-  function znajdzPrzyciskDalej() {
-    const elementy = widget.querySelectorAll(
-      'button, a, [role="button"]'
-    );
-
-    return Array.from(elementy).find((element) => {
-      const opis = [
-        element.getAttribute("aria-label"),
-        element.getAttribute("title"),
-        element.textContent
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-
-      return (
-        opis.includes("next") ||
-        opis.includes("następ") ||
-        opis.includes("right")
-      );
-    });
-  }
-
-  function rozpocznij() {
-    window.setInterval(() => {
-      const przyciskDalej = znajdzPrzyciskDalej();
-
-      if (przyciskDalej) {
-        przyciskDalej.click();
-      }
-    }, 5000);
-  }
-
-  const przyciskDalej = znajdzPrzyciskDalej();
-
-  if (przyciskDalej) {
-    rozpocznij();
-    return;
-  }
-
-  const obserwator = new MutationObserver(() => {
-    const przycisk = znajdzPrzyciskDalej();
-
-    if (przycisk) {
-      obserwator.disconnect();
-      rozpocznij();
-    }
-  });
-
-  obserwator.observe(widget, {
-    childList: true,
-    subtree: true
-  });
-}
-
-document.addEventListener("DOMContentLoaded", uruchomAutoplayOpinii);
 
 document.addEventListener("DOMContentLoaded", function () {
   const galeriaStudio = document.querySelector(".galeria-studio");

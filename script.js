@@ -127,66 +127,171 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+/* GALERIA ZDJĘĆ */
 
+const karuzelaZdjec = document.querySelector(".karuzela");
+const oknoZdjec = document.querySelector(".karuzela-okno");
+const listaZdjec = document.querySelector(".lista-zdjec");
+const zdjecia = document.querySelectorAll(".lista-zdjec img");
+const next = document.querySelector(".next");
+const prev = document.querySelector(".prev");
 
+if (
+  karuzelaZdjec &&
+  oknoZdjec &&
+  listaZdjec &&
+  zdjecia.length > 0 &&
+  next &&
+  prev
+) {
+  let indeksZdjecia = 0;
+  let automatGalerii = null;
 
-    /* GALERIA ZDJĘĆ */
+  function pobierzOdstepZdjec() {
+    const styleListy = window.getComputedStyle(listaZdjec);
+    const odstep = parseFloat(styleListy.columnGap || styleListy.gap);
 
-    const listaZdjec = document.querySelector(".lista-zdjec");
-    const zdjecia = document.querySelectorAll(".lista-zdjec img");
+    return Number.isFinite(odstep) ? odstep : 0;
+  }
 
-    const next = document.querySelector(".next");
-    const prev = document.querySelector(".prev");
+  function pobierzSzerokoscKroku() {
+    const szerokoscZdjecia =
+      zdjecia[0].getBoundingClientRect().width;
 
+    return szerokoscZdjecia + pobierzOdstepZdjec();
+  }
 
-    if(listaZdjec && zdjecia.length > 0 && next && prev){
+  function pobierzLiczbeWidocznychZdjec() {
+    const szerokoscOkna =
+      oknoZdjec.getBoundingClientRect().width;
 
+    const krok = pobierzSzerokoscKroku();
 
-        let index = 0;
-
-        const maxIndex = zdjecia.length - 3;
-
-
-        function przesun(){
-
-            const szerokosc = zdjecia[0].offsetWidth;
-            const gap = 19.2;
-
-
-            listaZdjec.style.transform =
-            "translateX(-" + index * (szerokosc + gap) + "px)";
-
-        }
-
-
-        next.addEventListener("click", function(){
-
-            if(index < maxIndex){
-
-                index++;
-                przesun();
-
-            }
-
-        });
-
-
-        prev.addEventListener("click", function(){
-
-            if(index > 0){
-
-                index--;
-                przesun();
-
-            }
-
-        });
-
+    if (krok <= 0) {
+      return 1;
     }
 
+    return Math.max(
+      1,
+      Math.floor(
+        (szerokoscOkna + pobierzOdstepZdjec()) / krok
+      )
+    );
+  }
+
+  function pobierzMaksymalnyIndeks() {
+    return Math.max(
+      0,
+      zdjecia.length - pobierzLiczbeWidocznychZdjec()
+    );
+  }
+
+  function przesunGalerie() {
+    const maksymalnyIndeks = pobierzMaksymalnyIndeks();
+
+    if (indeksZdjecia > maksymalnyIndeks) {
+      indeksZdjecia = maksymalnyIndeks;
+    }
+
+    const przesuniecie =
+      indeksZdjecia * pobierzSzerokoscKroku();
+
+    listaZdjec.style.transform =
+      "translateX(-" + przesuniecie + "px)";
+  }
+
+  function pokazNastepneZdjecie() {
+    const maksymalnyIndeks = pobierzMaksymalnyIndeks();
+
+    if (indeksZdjecia >= maksymalnyIndeks) {
+      indeksZdjecia = 0;
+    } else {
+      indeksZdjecia += 1;
+    }
+
+    przesunGalerie();
+  }
+
+  function pokazPoprzednieZdjecie() {
+    const maksymalnyIndeks = pobierzMaksymalnyIndeks();
+
+    if (indeksZdjecia <= 0) {
+      indeksZdjecia = maksymalnyIndeks;
+    } else {
+      indeksZdjecia = indeksZdjecia - 1;
+    }
+
+    przesunGalerie();
+  }
+
+  function zatrzymajAutomatGalerii() {
+    if (automatGalerii) {
+      window.clearInterval(automatGalerii);
+      automatGalerii = null;
+    }
+  }
+
+  function uruchomAutomatGalerii() {
+    zatrzymajAutomatGalerii();
+
+    automatGalerii = window.setInterval(
+      pokazNastepneZdjecie,
+      2500
+    );
+  }
+
+  next.addEventListener("click", function () {
+    pokazNastepneZdjecie();
+    uruchomAutomatGalerii();
+  });
+
+  prev.addEventListener("click", function () {
+    pokazPoprzednieZdjecie();
+    uruchomAutomatGalerii();
+  });
+
+  karuzelaZdjec.addEventListener(
+    "mouseenter",
+    zatrzymajAutomatGalerii
+  );
+
+  karuzelaZdjec.addEventListener(
+    "mouseleave",
+    uruchomAutomatGalerii
+  );
+
+  karuzelaZdjec.addEventListener(
+    "focusin",
+    zatrzymajAutomatGalerii
+  );
+
+  karuzelaZdjec.addEventListener(
+    "focusout",
+    uruchomAutomatGalerii
+  );
+
+  window.addEventListener("resize", function () {
+    window.requestAnimationFrame(przesunGalerie);
+  });
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      zatrzymajAutomatGalerii();
+    } else {
+      uruchomAutomatGalerii();
+    }
+  });
+
+  zdjecia.forEach(function (zdjecie) {
+    zdjecie.addEventListener("load", przesunGalerie);
+  });
+
+  przesunGalerie();
+  uruchomAutomatGalerii();
+}
 
 
-
+   
     /* OPINIE SWIPER */
 
     if(document.querySelector(".opinie-slider")){
@@ -367,4 +472,226 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+});
+
+function uruchomAutoplayOpinii() {
+  const widget = document.querySelector(".sk-ww-google-reviews");
+
+  if (!widget) {
+    return;
+  }
+
+  function znajdzPrzyciskDalej() {
+    const elementy = widget.querySelectorAll(
+      'button, a, [role="button"]'
+    );
+
+    return Array.from(elementy).find((element) => {
+      const opis = [
+        element.getAttribute("aria-label"),
+        element.getAttribute("title"),
+        element.textContent
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+      return (
+        opis.includes("next") ||
+        opis.includes("następ") ||
+        opis.includes("right")
+      );
+    });
+  }
+
+  function rozpocznij() {
+    window.setInterval(() => {
+      const przyciskDalej = znajdzPrzyciskDalej();
+
+      if (przyciskDalej) {
+        przyciskDalej.click();
+      }
+    }, 5000);
+  }
+
+  const przyciskDalej = znajdzPrzyciskDalej();
+
+  if (przyciskDalej) {
+    rozpocznij();
+    return;
+  }
+
+  const obserwator = new MutationObserver(() => {
+    const przycisk = znajdzPrzyciskDalej();
+
+    if (przycisk) {
+      obserwator.disconnect();
+      rozpocznij();
+    }
+  });
+
+  obserwator.observe(widget, {
+    childList: true,
+    subtree: true
+  });
+}
+
+document.addEventListener("DOMContentLoaded", uruchomAutoplayOpinii);
+
+document.addEventListener("DOMContentLoaded", function () {
+  const galeriaStudio = document.querySelector(".galeria-studio");
+  const oknoStudio = document.querySelector(".galeria-studio-okno");
+  const listaStudio = document.querySelector(".galeria-studio-lista");
+  const zdjeciaStudio = document.querySelectorAll(
+    ".galeria-studio-lista img"
+  );
+  const przyciskStudioDalej = document.querySelector(".studio-next");
+  const przyciskStudioWstecz = document.querySelector(".studio-prev");
+
+  if (
+    !galeriaStudio ||
+    !oknoStudio ||
+    !listaStudio ||
+    zdjeciaStudio.length === 0 ||
+    !przyciskStudioDalej ||
+    !przyciskStudioWstecz
+  ) {
+    return;
+  }
+
+  let indeksStudio = 0;
+  let automatStudio = null;
+
+  function pobierzOdstepStudio() {
+    const stylListy = window.getComputedStyle(listaStudio);
+    const odstep = parseFloat(
+      stylListy.columnGap || stylListy.gap
+    );
+
+    return Number.isFinite(odstep) ? odstep : 0;
+  }
+
+  function pobierzLiczbeWidocznychStudio() {
+    if (window.innerWidth <= 700) {
+      return 1;
+    }
+
+    if (window.innerWidth <= 1000) {
+      return 2;
+    }
+
+    return 3;
+  }
+
+  function pobierzMaksymalnyIndeksStudio() {
+    return Math.max(
+      0,
+      zdjeciaStudio.length - pobierzLiczbeWidocznychStudio()
+    );
+  }
+
+  function pobierzKrokStudio() {
+    const szerokoscZdjecia =
+      zdjeciaStudio[0].getBoundingClientRect().width;
+
+    return szerokoscZdjecia + pobierzOdstepStudio();
+  }
+
+  function przesunStudio() {
+    const maksymalnyIndeks = pobierzMaksymalnyIndeksStudio();
+
+    if (indeksStudio > maksymalnyIndeks) {
+      indeksStudio = maksymalnyIndeks;
+    }
+
+    if (indeksStudio < 0) {
+      indeksStudio = 0;
+    }
+
+    const przesuniecie = indeksStudio * pobierzKrokStudio();
+
+    listaStudio.style.transform =
+      "translateX(-" + przesuniecie + "px)";
+  }
+
+  function pokazNastepneStudio() {
+    const maksymalnyIndeks = pobierzMaksymalnyIndeksStudio();
+
+    if (indeksStudio >= maksymalnyIndeks) {
+      indeksStudio = 0;
+    } else {
+      indeksStudio += 1;
+    }
+
+    przesunStudio();
+  }
+
+  function pokazPoprzednieStudio() {
+    const maksymalnyIndeks = pobierzMaksymalnyIndeksStudio();
+
+    if (indeksStudio <= 0) {
+      indeksStudio = maksymalnyIndeks;
+    } else {
+      indeksStudio -= 1;
+    }
+
+    przesunStudio();
+  }
+
+  function zatrzymajAutomatStudio() {
+    if (automatStudio !== null) {
+      window.clearInterval(automatStudio);
+      automatStudio = null;
+    }
+  }
+
+  function uruchomAutomatStudio() {
+    zatrzymajAutomatStudio();
+
+    automatStudio = window.setInterval(
+      pokazNastepneStudio,
+      3000
+    );
+  }
+
+  przyciskStudioDalej.addEventListener("click", function () {
+    pokazNastepneStudio();
+    uruchomAutomatStudio();
+  });
+
+  przyciskStudioWstecz.addEventListener("click", function () {
+    pokazPoprzednieStudio();
+    uruchomAutomatStudio();
+  });
+
+  galeriaStudio.addEventListener(
+    "mouseenter",
+    zatrzymajAutomatStudio
+  );
+
+  galeriaStudio.addEventListener(
+    "mouseleave",
+    uruchomAutomatStudio
+  );
+
+  galeriaStudio.addEventListener(
+    "focusin",
+    zatrzymajAutomatStudio
+  );
+
+  galeriaStudio.addEventListener(
+    "focusout",
+    uruchomAutomatStudio
+  );
+
+  window.addEventListener("resize", function () {
+    window.requestAnimationFrame(przesunStudio);
+  });
+
+  zdjeciaStudio.forEach(function (zdjecie) {
+    zdjecie.addEventListener("load", przesunStudio);
+  });
+
+  przesunStudio();
+  uruchomAutomatStudio();
 });

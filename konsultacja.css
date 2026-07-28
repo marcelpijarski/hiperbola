@@ -1,0 +1,447 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.strona-konsultacji {
+  margin: 0;
+  background: #f7f3f0;
+  color: #152c44;
+}
+
+.konsultacja-gora {
+  width: 100%;
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 5vw;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(21, 44, 68, 0.1);
+}
+
+.konsultacja-logo img {
+  width: auto;
+  height: 46px;
+  display: block;
+}
+
+.konsultacja-powrot {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid #152c44;
+  border-radius: 999px;
+  color: #152c44;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.konsultacja-main {
+  width: min(1080px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 5rem 0 7rem;
+}
+
+.konsultacja-wprowadzenie {
+  max-width: 850px;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+
+.konsultacja-etykieta {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #63afcd;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.konsultacja-wprowadzenie h1 {
+  margin: 0 0 1.2rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 600;
+  line-height: 1.02;
+}
+
+.konsultacja-podtytul {
+  margin: 0 0 0.8rem;
+  color: #63afcd;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-weight: 800;
+}
+
+.konsultacja-wprowadzenie > p:last-child {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.formularz-konsultacji {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.formularz-krok {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: 2rem;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border: 1px solid rgba(21, 44, 68, 0.12);
+  border-radius: 24px;
+  background: #ffffff;
+}
+
+.formularz-krok-numer {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #152c44;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.formularz-krok-tresc h2 {
+  margin: 0 0 1rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.formularz-krok-tresc > p {
+  margin: 0 0 1.6rem;
+  color: #5b6270;
+  font-family: "Inter", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.formularz-pola {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.formularz-pole {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.formularz-pole-pelne {
+  grid-column: 1 / -1;
+}
+
+.formularz-pole label {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.formularz-pole input,
+.formularz-pole select,
+.formularz-pole textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(21, 44, 68, 0.2);
+  border-radius: 10px;
+  background: #fdfcfb;
+  color: #152c44;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  outline: none;
+}
+
+.formularz-pole textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.formularz-pole input:focus,
+.formularz-pole select:focus,
+.formularz-pole textarea:focus {
+  border-color: #63afcd;
+  box-shadow: 0 0 0 3px rgba(99, 175, 205, 0.16);
+}
+
+.formularz-opcje {
+  display: grid;
+  gap: 1rem;
+}
+
+.formularz-opcja {
+  cursor: pointer;
+}
+
+.formularz-opcja input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.formularz-opcja span {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 1.4rem;
+  border: 2px solid rgba(21, 44, 68, 0.14);
+  border-radius: 14px;
+  background: #fdfcfb;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.55;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.formularz-opcja input:checked + span {
+  border-color: #63afcd;
+  background: rgba(99, 175, 205, 0.1);
+  transform: translateY(-2px);
+}
+
+.formularz-panel {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: #f7f3f0;
+}
+
+.formularz-zgoda {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin: 1.8rem 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.formularz-zgoda input {
+  width: 20px;
+  height: 20px;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  accent-color: #63afcd;
+}
+
+.formularz-zgoda a {
+  color: #63afcd;
+  font-weight: 800;
+  text-underline-offset: 3px;
+}
+
+.formularz-przycisk {
+  width: min(100%, 480px);
+  min-height: 68px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 1rem 1.5rem;
+  border: 2px solid #63afcd;
+  border-radius: 999px;
+  background: #63afcd;
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.formularz-przycisk span {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.formularz-przycisk small {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.formularz-przycisk:hover {
+  background: transparent;
+  color: #63afcd;
+  transform: translateY(-3px);
+}
+
+.formularz-pulapka {
+  position: absolute;
+  left: -9999px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  .konsultacja-gora {
+    min-height: 72px;
+    padding: 0.8rem 18px;
+  }
+
+  .konsultacja-logo img {
+    height: 38px;
+  }
+
+  .konsultacja-powrot {
+    min-height: 40px;
+    padding: 0.65rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .konsultacja-main {
+    width: calc(100% - 32px);
+    padding: 3.5rem 0 5rem;
+  }
+
+  .formularz-krok {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+    padding: 1.6rem 1.2rem;
+    border-radius: 18px;
+  }
+
+  .formularz-krok-numer {
+    width: 58px;
+    height: 58px;
+    font-size: 1.35rem;
+  }
+
+  .formularz-pola {
+    grid-template-columns: 1fr;
+  }
+
+  .formularz-pole-pelne {
+    grid-column: auto;
+  }
+
+  .formularz-opcja span {
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .formularz-panel {
+    padding: 1.1rem;
+  }
+
+  .formularz-przycisk {
+    width: 100%;
+  }
+}
+
+.ebooki-main {
+  min-height: calc(100svh - 88px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 20px;
+}
+
+.ebooki-kontener {
+  width: min(850px, 100%);
+  padding: clamp(2rem, 6vw, 5rem);
+  border: 1px solid rgba(21, 44, 68, 0.12);
+  border-radius: 28px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.ebooki-kontener h1 {
+  margin: 0 0 1.2rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(3rem, 5vw, 4.8rem);
+  line-height: 1.05;
+}
+
+.ebooki-kontener > p {
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.ebooki-lista {
+  display: grid;
+  gap: 1rem;
+}
+
+.ebook-karta {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  border: 2px solid rgba(99, 175, 205, 0.3);
+  border-radius: 14px;
+  background: #fdfcfb;
+  color: #152c44;
+  font-family: "Inter", sans-serif;
+  text-align: left;
+  text-decoration: none;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.ebook-karta strong {
+  font-size: 1.1rem;
+}
+
+.ebook-karta span {
+  flex-shrink: 0;
+  color: #63afcd;
+  font-weight: 800;
+}
+
+.ebook-karta:hover {
+  border-color: #63afcd;
+  background: rgba(99, 175, 205, 0.08);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .ebooki-main {
+    padding: 3rem 16px;
+  }
+
+  .ebooki-kontener {
+    padding: 2rem 1.2rem;
+    border-radius: 20px;
+  }
+
+  .ebook-karta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

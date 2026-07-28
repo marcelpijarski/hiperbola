@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="assets/logo/favicon1.png"
+>
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="assets/logo/favicon2.png"
+>
+
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="assets/logo/favicon2.png"
+>
+  <title>Bezpłatna konsultacja | Hiperbola Fitness</title>
+
+  <meta
+    name="description"
+    content="Umów bezpłatną konsultację w Hiperbola Fitness i odbierz darmowe e-booki."
+  >
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="konsultacja.css">
+</head>
+
+<body class="strona-konsultacji">
+
+  <header class="konsultacja-gora">
+
+    <a href="index.html" class="konsultacja-logo">
+      <img
+        src="assets/logo/bw_full_hiperbola_logo_1.png"
+        alt="Hiperbola Fitness"
+      >
+    </a>
+
+    <a href="index.html" class="konsultacja-powrot">
+      Wróć do strony
+    </a>
+
+  </header>
+
+  <main class="konsultacja-main">
+
+    <section class="konsultacja-wprowadzenie">
+
+      <span class="konsultacja-etykieta">
+     
+      </span>
+
+      <h1>
+        Twoja podróż do poprawy jakości życia zaczyna się w Hiperboli!
+      </h1>
+
+      <p class="konsultacja-podtytul">
+        4 proste kroki i startujemy!
+      </p>
+
+      <p>
+        Wypełnij formularz i odbierz darmowe e-booki.
+      </p>
+
+    </section>
+
+    <form
+      class="formularz-konsultacji"
+      id="formularz-konsultacji"
+      action="https://formsubmit.co/marcelpij123@gmail.com"
+      method="POST"
+    >
+
+      <input
+        type="hidden"
+        name="_subject"
+        value="Nowe zgłoszenie na konsultację wstępną Hiperbola"
+      >
+
+      <input
+        type="hidden"
+        name="_template"
+        value="table"
+      >
+
+      <input
+        type="hidden"
+        name="_next"
+        value="https://marcelpijarski.github.io/hiperbola/ebooki.html"
+      >
+
+      <input
+        type="text"
+        name="_honey"
+        class="formularz-pulapka"
+        tabindex="-1"
+        autocomplete="off"
+      >
+
+      <section class="formularz-krok">
+
+        <div class="formularz-krok-numer">
+          1
+        </div>
+
+        <div class="formularz-krok-tresc">
+
+          <h2>
+            Powiedz nam, jak możemy się z Tobą skontaktować
+          </h2>
+
+          <div class="formularz-pola">
+
+            <div class="formularz-pole">
+
+              <label for="konsultacja-imie">
+                Imię i nazwisko
+              </label>
+
+              <input
+                type="text"
+                id="konsultacja-imie"
+                name="Imię i nazwisko"
+                autocomplete="name"
+                required
+              >
+
+            </div>
+
+            <div class="formularz-pole">
+
+              <label for="konsultacja-email">
+                Adres e-mail
+              </label>
+
+              <input
+                type="email"
+                id="konsultacja-email"
+                name="email"
+                autocomplete="email"
+                required
+              >
+
+            </div>
+
+            <div class="formularz-pole formularz-pole-pelne">
+
+              <label for="konsultacja-telefon">
+                Numer telefonu
+              </label>
+
+              <input
+                type="tel"
+                id="konsultacja-telefon"
+                name="Numer telefonu"
+                autocomplete="tel"
+                required
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <section class="formularz-krok">
+
+        <div class="formularz-krok-numer">
+          2
+        </div>
+
+        <div class="formularz-krok-tresc">
+
+          <h2>
+            Nawiążemy z Tobą kontakt
+          </h2>
+
+          <p>
+            W jaki sposób chcesz się umówić?
+          </p>
+
+          <div class="formularz-opcje">
+
+            <label class="formularz-opcja">
+
+              <input
+                type="radio"
+                name="Sposób umówienia"
+                value="Chcę umówić się samodzielnie"
+                data-wybor="samodzielnie"
+                required
+              >
+
+              <span>
+                Chcę umówić się samodzielnie, mam preferencję co do terminu
+                i trenera lub trenerki.
+              </span>
+
+            </label>
+
+            <label class="formularz-opcja">
+
+              <input
+                type="radio"
+                name="Sposób umówienia"
+                value="Proszę o kontakt"
+                data-wybor="kontakt"
+                required
+              >
+
+              <span>
+                Proszę o kontakt, nie jestem jeszcze pewny lub pewna,
+                czy chcę przyjść na trening.
+              </span>
+
+            </label>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <section class="formularz-krok">
+
+        <div class="formularz-krok-numer">
+          3
+        </div>
+
+        <div class="formularz-krok-tresc">
+
+          <h2>
+            Wybierz termin lub określ dogodny czas kontaktu
+          </h2>
+
+          <div
+            class="formularz-panel"
+            id="panel-samodzielnie"
+            hidden
+          >
+
+            <div class="formularz-pola">
+
+              <div class="formularz-pole">
+
+                <label for="data-treningu">
+                  Wybierz datę treningu wprowadzającego
+                </label>
+
+                <input
+                  type="date"
+                  id="data-treningu"
+                  name="Preferowana data treningu"
+                >
+
+              </div>
+
+              <div class="formularz-pole">
+
+                <label for="godzina-treningu">
+                  Preferowana godzina
+                </label>
+
+                <input
+                  type="time"
+                  id="godzina-treningu"
+                  name="Preferowana godzina treningu"
+                >
+
+              </div>
+
+              <div class="formularz-pole formularz-pole-pelne">
+
+                <label for="preferowany-trener">
+                  Preferowany trener lub trenerka
+                </label>
+
+                <select
+                  id="preferowany-trener"
+                  name="Preferowany trener lub trenerka"
+                >
+                  <option value="">
+                    Nie mam preferencji
+                  </option>
+
+                  <option value="Michał">
+                    Michał
+                  </option>
+
+                  <option value="Piotr">
+                    Piotr
+                  </option>
+
+                  <option value="Olga">
+                    Olga
+                  </option>
+
+                  <option value="Franek">
+                    Franek
+                  </option>
+
+                  <option value="Oliwia">
+                    Oliwia
+                  </option>
+
+                  <option value="Sandra">
+                    Sandra
+                  </option>
+                </select>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div
+            class="formularz-panel"
+            id="panel-kontakt"
+            hidden
+          >
+
+            <div class="formularz-pole">
+
+              <label for="termin-kontaktu">
+                Powiedz proszę, kiedy możemy się z Tobą skontaktować
+              </label>
+
+              <textarea
+                id="termin-kontaktu"
+                name="Preferowany termin kontaktu"
+                rows="4"
+                placeholder="Na przykład: poniedziałek po godzinie 17:00"
+              ></textarea>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <section class="formularz-krok">
+
+        <div class="formularz-krok-numer">
+          4
+        </div>
+
+        <div class="formularz-krok-tresc">
+
+          <h2>
+            Wszystko w Twoich rękach, decyzja należy do Ciebie
+          </h2>
+
+          <p>
+            Witamy na pokładzie Hiperboli i zaczynamy wspólnie Twoją przemianę.
+          </p>
+
+          <label class="formularz-zgoda">
+
+            <input
+              type="checkbox"
+              name="Zgoda na kontakt i ofertę"
+              value="Wyrażono zgodę"
+              required
+            >
+
+            <span>
+              Wyrażam zgodę na otrzymanie oferty oraz kontakt,
+              a także akceptuję
+              <a
+                href="polityka-prywatnosci.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                politykę prywatności
+              </a>.
+            </span>
+
+          </label>
+
+          <button
+            type="submit"
+            class="formularz-przycisk"
+          >
+            <span>
+              Odbierz bezpłatną konsultację
+            </span>
+
+            <small>
+              i odbierz darmowe e-booki
+            </small>
+          </button>
+
+        </div>
+
+      </section>
+
+    </form>
+
+  </main>
+
+  <script src="konsultacja.js"></script>
+
+</body>
+</html>

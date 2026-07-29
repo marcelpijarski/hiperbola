@@ -895,11 +895,11 @@ section {
 }
 
 .przycisk-konsultacja:hover {
-  border-color: #c14f81;
-  background: #c14f81;
+  border-color: #63afcd;
+  background: #63afcd;
   color: #ffffff;
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(218, 95, 149, 0.25);
+  box-shadow: 0 12px 28px rgba(95, 210, 218, 0.25);
 }
 
 .przycisk-trening {

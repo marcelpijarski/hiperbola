@@ -32,28 +32,46 @@
 </head>
 <body class="strona-glowna">
 <nav class="navbar">
-     <div class="navbar-kontener">
- <a href="index.html" class="logo">
-  <img src="assets/logo/bw_full_hiperbola_logo_1.png" alt="Hiperbola Fitness">
- </a>
+  <div class="navbar-kontener">
 
- <button class="hamburger" type="button" aria-label="Menu">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+    <a href="index.html" class="logo">
+      <img
+        src="assets/logo/bw_full_hiperbola_logo_1.png"
+        alt="Hiperbola Fitness"
+      >
+    </a>
 
-  <ul class="nav-list">
-    <li><a href="index.html">Strona główna</a></li>
-    <li><a href="regain.html">Program ReGain</a></li>
-    <li><a href="glowup.html">Program GLOWUP</a></li>
-    <li><a href="trenerzy.html">Nasz Zespół</a></li>
-    <li><a href="podopieczne.html">Nasi podopieczni</a></li>
-    <li><a href="oferta.html">Oferta</a></li>
-    <li><a href="kontakt.html">Kontakt</a></li>
-  </ul>
+    <button
+      class="hamburger"
+      type="button"
+      aria-label="Otwórz menu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-  <a href="konsultacja.html" class="nav-button">Umów wizytę</a>
+    <ul class="nav-list">
+      <li><a href="index.html">Strona główna</a></li>
+      <li><a href="regain.html">Program ReGain</a></li>
+      <li><a href="glowup.html">Program GLOWUP</a></li>
+      <li><a href="trenerzy.html">Nasz Zespół</a></li>
+      <li><a href="podopieczne.html">Nasi podopieczni</a></li>
+      <li><a href="oferta.html">Oferta</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+
+      <li class="nav-cta-mobile">
+        <a href="konsultacja.html">
+          Umów wizytę
+        </a>
+      </li>
+    </ul>
+
+    <a href="konsultacja.html" class="nav-button">
+      Umów wizytę
+    </a>
+
   </div>
 </nav>
 <main>
@@ -61,18 +79,12 @@
 
     <img src="assets/foto/main_hero_section.webp" alt="Head coach Hiperbola" class="hero-image">
 
-    <a
-    href="https://www.google.com/search?num=10&hl=pl-PL&sca_esv=114ce2f88324942a&cs=1&output=search&tbm=lcl&kgmid=/g/11yfk1c3xv&q=Hiperbola+Fitness+-+Trening+Personalny+-+Warszawa,+Wola&shem=epsd1,rimspwouohc&shndl=30&source=sh/x/kp/local/m1/1&kgs=67ddbf042e344611&utm_source=epsd1,rimspwouohc,sh/x/kp/local/m1/1#lkt=LocalPoiReviews&rlfi=hd:;si:9443603012060919291,l,CjdIaXBlcmJvbGEgRml0bmVzcyAtIFRyZW5pbmcgUGVyc29uYWxueSAtIFdhcnN6YXdhLCBXb2xhkgEQcGVyc29uYWxfdHJhaW5lcg;mv:[[52.24089497731902,20.980904414704327],[52.24053502268096,20.980316585295665]]"
-    class="google-ocena"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Zobacz opinie Hiperbola Fitness w Google"
->
-    <img
-        src="assets/opinie/ocena google.png"
-        alt="Ocena 5.0 na podstawie 108 opinii Google"
-    >
-</a>
+   <div class="google-ocena-widget" aria-label="Opinie Google">
+  <div
+    class="elfsight-app-62901b9c-191f-411a-bb4b-1a679da1f72c"
+    data-elfsight-app-lazy
+  ></div>
+</div>
     
 
     <div class="hero-overlay"></div>
@@ -1588,5 +1600,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="script.js"></script>
 <script src="cookies.js"></script>
+<script src="https://elfsightcdn.com/platform.js" async></script>
 </body>
 </html>

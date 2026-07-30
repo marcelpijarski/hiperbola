@@ -640,3 +640,23 @@ document.addEventListener("DOMContentLoaded", function () {
   przesunStudio();
   uruchomAutomatStudio();
 });
+
+document.querySelectorAll(".komorka-porownania").forEach((komorka) => {
+  const walker = document.createTreeWalker(
+    komorka,
+    NodeFilter.SHOW_TEXT
+  );
+
+  const teksty = [];
+
+  while (walker.nextNode()) {
+    teksty.push(walker.currentNode);
+  }
+
+  teksty.forEach((tekst) => {
+    tekst.nodeValue = tekst.nodeValue.replace(
+      /(^|\s)([aiouwz])\s+/gi,
+      "$1$2\u00A0"
+    );
+  });
+});
